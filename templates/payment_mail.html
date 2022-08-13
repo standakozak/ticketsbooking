@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    Přijali jsme Vaši platbu za lístky na maturitní ples Gymnázia Holice (ve výši {{celkova_cena}} Kč).<br><br>
+    Možnosti vyzvednutí lístků v kanceláři jsou zveřejněny na <a href="http://www.gyholi.cz/">stránkách školy</a> a na sociálních sítích. Vyzvednutí u maturantů je možné po osobní domluvě.<br>
+    Pro změnu nebo zrušení rezervace nás můžete kontaktovat na mail listky@210122.cz.
+<br>
+    Budeme se na Vás těšit 17. června 2022 v 18:00 v Ideonu Pardubice!<br><br>
+    S přáním příjemného dne<br>
+    Maturanti Gymnázia Holice<br><br>
+    
+    <b>Vaše údaje:</b>
+    <table>
+        <tr>
+            <td>Jméno a příjmení</td>
+            <td>{{uzivatel.jmeno}}</td></tr>
+        <tr>
+            <td>Email</td>
+            <td>{{uzivatel.email}}</td></tr>
+        <tr>
+            <td>Telefon</td>
+            <td>{{uzivatel.telefon}}</td></tr>
+        <tr>
+            <td>Vyzvednutí lístků</td>
+            <td>
+                {% if uzivatel.zpusob_vyzvednuti == "kancelar" %}
+                Ve škole (Gymnázium Dr. Emila Holuba)
+                {% elif uzivatel.zpusob_vyzvednuti == "ideon" %}
+                Na místě (Ideon)
+                {% elif uzivatel.zpusob_vyzvednuti == "ctvrta" %}
+                U třídy 4.A
+                {% elif uzivatel.zpusob_vyzvednuti == "osma" %}
+                U třídy 8.C
+                {%endif%}
+    
+            </td></tr>
+    </table>
+</body>
+</html>

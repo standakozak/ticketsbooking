@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    Thank You for booking tickets for Maturita Prom of Dr. Emil Holub Grammar School.<br><br>
+    These seats are booked for You: {{tables_info_text}}.<br>
+    Please, send {{number_of_tickets * price}} Kč to the bank account {{account_number}} with variable symbol {{user.id}} in the next three days, otherwise your booking would be cancelled.<br>
+    You can contact us at listky@210122.cz.<br>
+    See You on 17th June 2022 at Ideon Pardubice!<br><br>
+    Have a nice day<br>
+    Students at the Dr. Emil Holub's Grammar School<br><br>
+    
+    <b>Your contact information:</b>
+    <table>
+        <tr>
+            <td>Name and surname</td>
+            <td>{{user.name}}</td></tr>
+        <tr>
+            <td>Email</td>
+            <td>{{user.email}}</td></tr>
+        <tr>
+            <td>Phone number</td>
+            <td>{{user.phone_number}}</td></tr>
+        <tr>
+            <td>Place of picking the tickets</td>
+            <td>
+                {% if user.place_of_picking_up == "office" %}
+                In the school's office (Dr. Emil Holub Grammar School)
+                {% elif user.place_of_picking_up == "ideon" %}
+                At Ideon
+                {% elif user.place_of_picking_up == "four" %}
+                At the class 4.A
+                {% elif user.place_of_picking_up == "eight" %}
+                At the class 8.C
+                {%endif%}
+    
+            </td></tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,773 @@
+{% extends "base_template.html"%}
+{% block title %} Dance Hall's map{% endblock %}
+
+{% block head%}
+
+<link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='table_map.css') }}">
+{%endblock%}
+{% block body %}
+
+<p class="required">{{error}}</p>
+
+<div style="{width:200px}">
+	<button id="show_velky_sal" onclick="show('prizemi_sal_div', 'show_velky_sal')" 
+		class="sal_button sal_active" width="104">
+		Ground Floor
+	</button><br>
+
+	<button id="show_levy_sal" onclick="show('levy_sal_div', 'show_levy_sal')" 
+		class="sal_button skryte" width="50">
+		Left Hall
+	</button>
+	<button id="show_pravy_sal" onclick="show('pravy_sal_div', 'show_pravy_sal')"
+		class="sal_button skryte" width="50">
+		Right Hall
+	</button>
+	
+	<button id="show_galerie" onclick="show('galerie_div', 'show_galerie')" 
+		class="sal_button" width="104">
+		Second Floor
+	</button>
+</div>
+<div id="prizemi_sal_div">
+<div id="velky_sal_div">
+	<fieldset>
+		<legend>Choose tables - Ground Floor</legend>
+
+
+		<!-- První řada velký sál --> 
+
+		<input type="button" name="stul" value="{{tables[1]}} 1" 
+			class="stul hF v5" id="1" 
+			onclick="oncheck('1', {{tables[1]}}, '1', 'Great Hall')"
+			title="Table no. 1, available seats: {{tables[1]}}"
+			{% if tables[1] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[2]}} 2" 
+			class="stul hJ v5" id="2" 
+			onclick="oncheck('2', {{tables[2]}}, '2', 'Great Hall')"
+			title="Table no. 2, available seats: {{tables[2]}}"
+			{% if tables[2] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[3]}} 3"
+			class="stul hO v3 vertikalni"  id="3"
+			onclick="oncheck('3', {{tables[3]}}, '3', 'Great Hall')"
+			title="Table no. 3, available seats: {{tables[3]}}"
+			{% if tables[3] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[4]}} 4"
+			class="stul hQ v3 vertikalni" id="4"
+			onclick="oncheck('4', {{tables[4]}}, '4', 'Great Hall')"
+			title="Table no. 4, available seats: {{tables[4]}}"
+			{% if tables[4] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[5]}} 5"
+			class="stul hS v3 vertikalni" id="5" 
+			onclick="oncheck('5', {{tables[5]}}, '5', 'Great Hall')"
+			title="Table no. 5, available seats: {{tables[5]}}"
+			{% if tables[5] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[6]}} 6"
+			class="stul hX v3 vertikalni" id="6"
+			onclick="oncheck('6', {{tables[6]}}, '6', 'Great Hall')"
+			title="Table no. 6, available seats: {{tables[6]}}"
+			{% if tables[6] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[7]}} 7"
+			class="stul hZ v3 vertikalni" id="7"
+			onclick="oncheck('7', {{tables[7]}}, '7', 'Great Hall')"
+			title="Table no. 7, available seats: {{tables[7]}}"
+			{% if tables[7] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[8]}} 8"
+			class="stul hAB v3 vertikalni" id="8"
+			onclick="oncheck('8', {{tables[8]}}, '8', 'Great Hall')"
+			title="Table no. 8, available seats: {{tables[8]}}"
+			{% if tables[8] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[9]}} 9"
+			class="stul hAD v3 vertikalni" id="9"
+			onclick="oncheck('9', {{tables[9]}}, '9', 'Great Hall')"
+			title="Table no. 9, available seats: {{tables[9]}}"
+			{% if tables[9] == 0 %}disabled{% endif %}
+		>
+
+		<!-- Druhá řada velký sál -->
+		<input type="button" name="stul" value="{{tables[10]}} 10"
+			class="stul hV v8" id="10"
+			onclick="oncheck('10', {{tables[10]}}, '10', 'Great Hall')"
+			title="Table no. 10, available seats: {{tables[10]}}"
+			{% if tables[10] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[11]}} 11"
+			class="stul hZ v8" id="11"
+			onclick="oncheck('11', {{tables[11]}}, '11', 'Great Hall')"
+			title="Table no. 11, available seats: {{tables[11]}}"
+			{% if tables[11] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[12]}} 12"
+			class="stul hAD v8" id="12"
+			onclick="oncheck('12', {{tables[12]}}, '12', 'Great Hall')"
+			title="Table no. 12, available seats: {{tables[12]}}"
+			{% if tables[12] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[13]}} 13"
+			class="stul hAH v8" id="13"
+			onclick="oncheck('13', {{tables[13]}}, '13', 'Great Hall')"
+			title="Table no. 13, available seats: {{tables[13]}}"
+			{% if tables[13] == 0 %}disabled{% endif %}
+		>
+
+		<!-- Třetí řada velký sál -->
+		<input type="button" name="stul" value="{{tables[14]}} 14"
+			class="stul hV v11" id="14"
+			onclick="oncheck('14', {{tables[14]}}, '14', 'Great Hall')"
+			title="Table no. 14, available seats: {{tables[14]}}"
+			{% if tables[14] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[15]}} 15"
+			class="stul hZ v11" id="15"
+			onclick="oncheck('15', {{tables[15]}}, '15', 'Great Hall')"
+			title="Table no. 15, available seats: {{tables[15]}}"
+			{% if tables[15] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[16]}} 16"
+			class="stul hAD v11" id="16"
+			onclick="oncheck('16', {{tables[16]}}, '16', 'Great Hall')"
+			title="Table no. 16, available seats: {{tables[16]}}"
+			{% if tables[16] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[17]}} 17"
+			class="stul hAH v11" id="17"
+			onclick="oncheck('17', {{tables[17]}}, '17', 'Great Hall')"
+			title="Table no. 17, available seats: {{tables[17]}}"
+			{% if tables[17] == 0 %}disabled{% endif %}
+		>
+
+
+		<!-- Čtvrtá řada velký sál -->
+		<input type="button" name="stul" value="{{tables[18]}} 18"
+			class="stul hV v14" id="18"
+			onclick="oncheck('18', {{tables[18]}}, '18', 'Great Hall')"
+			title="Table no. 18, available seats: {{tables[18]}}"
+			{% if tables[18] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[19]}} 19"
+			class="stul hZ v14" id="19"
+			onclick="oncheck('19', {{tables[19]}}, '19', 'Great Hall')"
+			title="Table no. 19, available seats: {{tables[19]}}"
+			{% if tables[19] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[20]}} 20"
+			class="stul hAD v14" id="20"
+			onclick="oncheck('20', {{tables[20]}}, '20', 'Great Hall')"
+			title="Table no. 20, available seats: {{tables[20]}}"
+			{% if tables[20] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[21]}} 21"
+			class="stul hAH v14" id="21"
+			onclick="oncheck('21', {{tables[21]}}, '21', 'Great Hall')"
+			title="Table no. 21, available seats: {{tables[21]}}"
+			{% if tables[21] == 0 %}disabled{% endif %}
+		>
+
+
+		<!-- Pátá řada velký sál -->
+		<input type="button" name="stul" value="{{tables[22]}} 22"
+			class="stul hV v17" id="22"
+			onclick="oncheck('22', {{tables[22]}}, '22', 'Great Hall')"
+			title="Table no. 22, available seats: {{tables[22]}}"
+			{% if tables[22] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[23]}} 23"
+			class="stul hZ v17" id="23"
+			onclick="oncheck('23', {{tables[23]}}, '23', 'Great Hall')"
+			title="Table no. 23, available seats: {{tables[23]}}"
+			{% if tables[23] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[24]}} 24"
+			class="stul hAD v17" id="24"
+			onclick="oncheck('24', {{tables[24]}}, '24', 'Great Hall')"
+			title="Table no. 24, available seats: {{tables[24]}}"
+			{% if tables[24] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[25]}} 25"
+			class="stul hAH v17" id="25"
+			onclick="oncheck('25', {{tables[21]}}, '25', 'Great Hall')"
+			title="Table no. 25, available seats: {{tables[25]}}"
+			{% if tables[25] == 0 %}disabled{% endif %}
+		>
+
+
+		<!-- Šestá řada velký sál -->
+		<input type="button" name="stul" value="{{tables[26]}} 26"
+			class="stul hV v20" id="26"
+			onclick="oncheck('26', {{tables[26]}}, '26', 'Great Hall')"
+			title="Table no. 26, available seats: {{tables[26]}}"
+			{% if tables[26] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[27]}} 27"
+			class="stul hZ v20" id="27"
+			onclick="oncheck('27', {{tables[27]}}, '27', 'Great Hall')"
+			title="Table no. 27, available seats: {{tables[27]}}"
+			{% if tables[27] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[28]}} 28"
+			class="stul hAD v20" id="28"
+			onclick="oncheck('28', {{tables[28]}}, '28', 'Great Hall')"
+			title="Table no. 28, available seats: {{tables[28]}}"
+			{% if tables[28] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[29]}} 29"
+			class="stul hAH v20" id="29"
+			onclick="oncheck('29', {{tables[29]}}, '29', 'Great Hall')"
+			title="Table no. 29, available seats: {{tables[29]}}"
+			{% if tables[29] == 0 %}disabled{% endif %}
+		>
+
+
+		<!-- Sedmá řada -- poslední ve velkém sále -->
+		<input type="button" name="stul" value="{{tables[43]}} 43"
+			class="stul hF v23 vertikalni" id="43"
+			onclick="oncheck('43', {{tables[43]}}, '43', 'Great Hall')"
+			title="Table no. 43, available seats: {{tables[43]}}"
+			{% if tables[43] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[42]}} 42"
+			class="stul hH v23 vertikalni" id="42"
+			onclick="oncheck('42', {{tables[42]}}, '42', 'Great Hall')"
+			title="Table no. 42, available seats: {{tables[42]}}"
+			{% if tables[42] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[41]}} 41"
+			class="stul hJ v23 vertikalni" id="41"
+			onclick="oncheck('41', {{tables[41]}}, '41', 'Great Hall')"
+			title="Table no. 41, available seats: {{tables[41]}}"
+			{% if tables[41] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[40]}} 40"
+			class="stul hO v23 vertikalni" id="40"
+			onclick="oncheck('40', {{tables[40]}}, '40', 'Great Hall')"
+			title="Table no. 40, available seats: {{tables[40]}}"
+			{% if tables[40] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[39]}} 39"
+			class="stul hQ v23 vertikalni" id="39"
+			onclick="oncheck('39', {{tables[39]}}, '39', 'Great Hall')"
+			title="Table no. 39, available seats: {{tables[39]}}"
+			{% if tables[39] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[38]}} 38"
+			class="stul hS v23 vertikalni" id="38"
+			onclick="oncheck('38', {{tables[38]}}, '38', 'Great Hall')"
+			title="Table no. 38, available seats: {{tables[38]}}"
+			{% if tables[38] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[37]}} 37"
+			class="stul hU v23 vertikalni" id="37"
+			onclick="oncheck('37', {{tables[37]}}, '37', 'Great Hall')"
+			title="Table no. 37, available seats: {{tables[37]}}"
+			{% if tables[37] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[36]}} 36"
+			class="stul hW v23 vertikalni" id="36"
+			onclick="oncheck('36', {{tables[36]}}, '36', 'Great Hall')"
+			title="Table no. 36, available seats: {{tables[36]}}"
+			{% if tables[36] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[35]}} 35"
+			class="stul hY v23 vertikalni" id="35"
+			onclick="oncheck('35', {{tables[35]}}, '35', 'Great Hall')"
+			title="Table no. 35, available seats: {{tables[35]}}"
+			{% if tables[35] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[34]}} 34"
+			class="stul hAA v23 vertikalni" id="34"
+			onclick="oncheck('34', {{tables[34]}}, '34', 'Great Hall')"
+			title="Table no. 34, available seats: {{tables[34]}}"
+			{% if tables[34] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[33]}} 33"
+			class="stul hAC v23 vertikalni" id="33"
+			onclick="oncheck('33', {{tables[33]}}, '33', 'Great Hall')"
+			title="Table no. 33, available seats: {{tables[33]}}"
+			{% if tables[33] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[32]}} 32"
+			class="stul hAG v23 vertikalni" id="32"
+			onclick="oncheck('32', {{tables[32]}}, '32', 'Great Hall')"
+			title="Table no. 32, available seats: {{tables[32]}}"
+			{% if tables[32] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[31]}} 31"
+			class="stul hAI v23 vertikalni" id="31"
+			onclick="oncheck('31', {{tables[31]}}, '31', 'Great Hall')"
+			title="Table no. 31, available seats: {{tables[31]}}"
+			{% if tables[31] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[30]}} 30"
+			class="stul hAK v23 vertikalni" id="30"
+			onclick="oncheck('30', {{tables[30]}}, '30', 'Great Hall')"
+			title="Table no. 30, available seats: {{tables[30]}}"
+			{% if tables[30] == 0 %}disabled{% endif %}
+		>
+
+
+		<div class="parket hL v7">Stage</div>
+	</fieldset>
+</div>
+
+<!-- LEVÝ SÁL -->
+<div id="levy_sal_div" class="neskryte">
+	<fieldset>
+		<!-- <legend>Levý sál</legend> -->
+		
+		<!-- První horizontální řada levý sál -->
+		<input type="button" name="stul" value="{{tables[62]}} 62"
+			class="stul hG v28 vertikalni" id="62"
+			onclick="oncheck('62', {{tables[62]}}, '62', 'Left Hall')"
+			title="Table no. 62, available seats: {{tables[62]}}"
+			{% if tables[62] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[63]}} 63"
+			class="stul hI v28 vertikalni" id="63"
+			onclick="oncheck('63', {{tables[63]}}, '63', 'Left Hall')"
+			title="Table no. 63, available seats: {{tables[63]}}"
+			{% if tables[63] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[64]}} 64"
+			class="stul hO v28 vertikalni" id="64"
+			onclick="oncheck('64', {{tables[64]}}, '64', 'Left Hall')"
+			title="Table no. 64, available seats: {{tables[64]}}"
+			{% if tables[64] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[65]}} 65"
+			class="stul hQ v28 vertikalni" id="65"
+			onclick="oncheck('65', {{tables[65]}}, '65', 'Left Hall')"
+			title="Table no. 65, available seats: {{tables[65]}}"
+			{% if tables[65] == 0 %}disabled{% endif %}
+		>
+
+		<!-- Druhá horizontální řada levý sál -->
+		<input type="button" name="stul" value="{{tables[58]}} 58"
+			class="stul hG v33 vertikalni" id="58"
+			onclick="oncheck('58', {{tables[58]}}, '58', 'Left Hall')"
+			title="Table no. 58, available seats: {{tables[58]}}"
+			{% if tables[58] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[59]}} 59"
+			class="stul hI v33 vertikalni" id="59"
+			onclick="oncheck('59', {{tables[59]}}, '59', 'Left Hall')"
+			title="Table no. 59, available seats: {{tables[59]}}"
+			{% if tables[59] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[60]}} 60"
+			class="stul hM v33 vertikalni" id="60"
+			onclick="oncheck('60', {{tables[60]}}, '60', 'Left Hall')"
+			title="Table no. 60, available seats: {{tables[60]}}"
+			{% if tables[60] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[61]}} 61"
+			class="stul hQ v33 vertikalni" id="61"
+			onclick="oncheck('61', {{tables[61]}}, '61', 'Left Hall')"
+			title="Table no. 61, available seats: {{tables[61]}}"
+			{% if tables[61] == 0 %}disabled{% endif %}
+		>
+
+
+		<!-- Třetí horizontální řada levý sál -->
+		<input type="button" name="stul" value="{{tables[51]}} 51"
+			class="stul hC v38 vertikalni" id="51"
+			onclick="oncheck('51', {{tables[51]}}, '51', 'Left Hall')"
+			title="Table no. 51, available seats: {{tables[51]}}"
+			{% if tables[51] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[52]}} 52"
+			class="stul hG v38 vertikalni" id="52"
+			onclick="oncheck('52', {{tables[52]}}, '52', 'Left Hall')"
+			title="Table no. 52, available seats: {{tables[52]}}"
+			{% if tables[52] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[53]}} 53"
+			class="stul hI v38 vertikalni" id="53"
+			onclick="oncheck('53', {{tables[53]}}, '53', 'Left Hall')"
+			title="Table no. 53, available seats: {{tables[53]}}"
+			{% if tables[53] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[54]}} 54"
+			class="stul hM v38 vertikalni" id="54"
+			onclick="oncheck('54', {{tables[54]}}, '54', 'Left Hall')"
+			title="Table no. 54, available seats: {{tables[54]}}"
+			{% if tables[54] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[55]}} 55"
+			class="stul hO v38 vertikalni" id="55"
+			onclick="oncheck('55', {{tables[55]}}, '55', 'Left Hall')"
+			title="Table no. 55, available seats: {{tables[55]}}"
+			{% if tables[55] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[56]}} 56"
+			class="stul hQ v38 vertikalni" id="56"
+			onclick="oncheck('56', {{tables[56]}}, '56', 'Left Hall')"
+			title="Table no. 56, available seats: {{tables[56]}}"
+			{% if tables[56] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[57]}} 57"
+			class="stul hS v38 vertikalni" id="57"
+			onclick="oncheck('57', {{tables[57]}}, '57', 'Left Hall')"
+			title="Table no. 57, available seats: {{tables[57]}}"
+			{% if tables[57] == 0 %}disabled{% endif %}
+		>
+
+		<!-- Krajní vertikální řada levý sál -->
+		<input type="button" name="stul" value="{{tables[47]}} 47"
+			class="stul hB v30" id="47"
+			onclick="oncheck('47', {{tables[47]}}, '47', 'Left Hall')"
+			title="Table no. 47, available seats: {{tables[47]}}"
+			{% if tables[47] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[48]}} 48"
+			class="stul hB v32" id="48"
+			onclick="oncheck('48', {{tables[48]}}, '48', 'Left Hall')"
+			title="Table no. 48, available seats: {{tables[48]}}"
+			{% if tables[48] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[49]}} 49"
+			class="stul hB v34" id="49"
+			onclick="oncheck('49', {{tables[49]}}, '49', 'Left Hall')"
+			title="Table no. 49, available seats: {{tables[49]}}"
+			{% if tables[49] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[50]}} 50"
+			class="stul hB v36" id="50"
+			onclick="oncheck('50', {{tables[50]}}, '50', 'Left Hall')"
+			title="Table no. 50, available seats: {{tables[50]}}"
+			{% if tables[50] == 0 %}disabled{% endif %}
+		>
+	</fieldset>
+</div>
+
+
+<!-- PRAVÝ SÁL -->
+<div id="pravy_sal_div" class="neskryte">
+	<fieldset>
+		<!-- <legend>Pravý sál</legend> -->
+		
+		
+		<!-- První horizontální řada pravý sál -->
+		<input type="button" name="stul" value="{{tables[66]}} 66"
+			class="stul hB v28 vertikalni" id="66"
+			onclick="oncheck('66', {{tables[66]}}, '66', 'Right Hall')"
+			title="Table no. 66, available seats: {{tables[66]}}"
+			{% if tables[66] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[67]}} 67"
+			class="stul hD v28 vertikalni" id="67"
+			onclick="oncheck('67', {{tables[67]}}, '67', 'Right Hall')"
+			title="Table no. 67, available seats: {{tables[67]}}"
+			{% if tables[67] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[68]}} 68"
+			class="stul hH v28 vertikalni" id="68"
+			onclick="oncheck('68', {{tables[68]}}, '68', 'Right Hall')"
+			title="Table no. 68, available seats: {{tables[68]}}"
+			{% if tables[68] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[69]}} 69"
+			class="stul hK v28 vertikalni" id="69"
+			onclick="oncheck('69', {{tables[69]}}, '69', 'Right Hall')"
+			title="Table no. 69, available seats: {{tables[69]}}"
+			{% if tables[69] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[70]}} 70"
+			class="stul hN v28 vertikalni" id="70"
+			onclick="oncheck('70', {{tables[70]}}, '70', 'Right Hall')"
+			title="Table no. 70, available seats: {{tables[70]}}"
+			{% if tables[70] == 0 %}disabled{% endif %}
+		>
+
+		<!-- Druhá horizontální řada pravý sál -->
+		<input type="button" name="stul" value="{{tables[74]}} 74"
+			class="stul hB v33 vertikalni" id="74"
+			onclick="oncheck('74', {{tables[74]}}, '74', 'Right Hall')"
+			title="Table no. 74, available seats: {{tables[74]}}"
+			{% if tables[74] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[75]}} 75"
+			class="stul hF v33 vertikalni" id="75"
+			onclick="oncheck('75', {{tables[75]}}, '75', 'Right Hall')"
+			title="Table no. 75, available seats: {{tables[75]}}"
+			{% if tables[75] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[76]}} 76"
+			class="stul hH v33 vertikalni" id="76"
+			onclick="oncheck('76', {{tables[76]}}, '76', 'Right Hall')"
+			title="Table no. 76, available seats: {{tables[76]}}"
+			{% if tables[76] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[71]}} 71"
+			class="stul hL v33 vertikalni" id="71"
+			onclick="oncheck('71', {{tables[71]}}, '71', 'Right Hall')"
+			title="Table no. 71, available seats: {{tables[71]}}"
+			{% if tables[71] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[72]}} 72"
+			class="stul hN v33 vertikalni" id="72"
+			onclick="oncheck('72', {{tables[72]}}, '72', 'Right Hall')"
+			title="Table no. 72, available seats: {{tables[72]}}"
+			{% if tables[72] == 0 %}disabled{% endif %}
+		>
+
+
+		<!-- Třetí horizontální řada pravý sál -->
+		<input type="button" name="stul" value="{{tables[80]}} 80"
+			class="stul hF v38 vertikalni" id="80"
+			onclick="oncheck('80', {{tables[80]}}, '80', 'Right Hall')"
+			title="Table no. 80, available seats: {{tables[80]}}"
+			{% if tables[80] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[81]}} 81"
+			class="stul hH v38 vertikalni" id="81"
+			onclick="oncheck('81', {{tables[81]}}, '81', 'Right Hall')"
+			title="Table no. 81, available seats: {{tables[81]}}"
+			{% if tables[81] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[82]}} 82"
+			class="stul hJ v38 vertikalni" id="82"
+			onclick="oncheck('82', {{tables[82]}}, '82', 'Right Hall')"
+			title="Table no. 82, available seats: {{tables[82]}}"
+			{% if tables[82] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[83]}} 83"
+			class="stul hL v38 vertikalni" id="83"
+			onclick="oncheck('83', {{tables[83]}}, '83', 'Right Hall')"
+			title="Table no. 83, available seats: {{tables[83]}}"
+			{% if tables[83] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[73]}} 73"
+			class="stul hN v38 vertikalni" id="73"
+			onclick="oncheck('73', {{tables[73]}}, '73', 'Right Hall')"
+			title="Table no. 73, available seats: {{tables[73]}}"
+			{% if tables[73] == 0 %}disabled{% endif %}
+		>
+	</fieldset>
+</div>
+
+</div>
+<!-- GALERIE -->
+<div id="galerie_div" class="skryte">
+	<fieldset>
+		<legend>Choose tables - Second Floor</legend>
+		
+		
+		<!-- Levá vertikální řada galerie -->
+		<input type="button" name="stul" value="{{tables[84]}} 1"
+			class="stul hB v9" id="84"
+			onclick="oncheck('84', {{tables[84]}}, '1', 'Second Floor')"
+			title="Table no. 1, available seats: {{tables[84]}}"
+			{% if tables[84] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[85]}} 2"
+			class="stul hB v11" id="85"
+			onclick="oncheck('85', {{tables[85]}}, '2', 'Second Floor')"
+			title="Table no. 2, available seats: {{tables[85]}}"
+			{% if tables[85] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[86]}} 3"
+			class="stul hB v13" id="86"
+			onclick="oncheck('86', {{tables[86]}}, '3', 'Second Floor')"
+			title="Table no. 3, available seats: {{tables[86]}}"
+			{% if tables[86] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[87]}} 4"
+			class="stul hB v15" id="87"
+			onclick="oncheck('87', {{tables[87]}}, '4', 'Second Floor')"
+			title="Table no. 4, available seats: {{tables[87]}}"
+			{% if tables[87] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[88]}} 5"
+			class="stul hB v17" id="88"
+			onclick="oncheck('88', {{tables[88]}}, '5', 'Second Floor')"
+			title="Table no. 5, available seats: {{tables[88]}}"
+			{% if tables[88] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[89]}} 6"
+			class="stul hB v19" id="89"
+			onclick="oncheck('89', {{tables[89]}}, '6', 'Second Floor')"
+			title="Table no. 6, available seats: {{tables[89]}}"
+			{% if tables[89] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[90]}} 7"
+			class="stul hB v21" id="90"
+			onclick="oncheck('90', {{tables[90]}}, '7', 'Second Floor')"
+			title="Table no. 7, available seats: {{tables[90]}}"
+			{% if tables[90] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[91]}} 8"
+			class="stul hB v23" id="91"
+			onclick="oncheck('91', {{tables[91]}}, '8', 'Second Floor')"
+			title="Table no. 8, available seats: {{tables[91]}}"
+			{% if tables[91] == 0 %}disabled{% endif %}
+		>
+
+
+		<!-- Pravá vertikální řada galerie -->
+		<input type="button" name="stul" value="{{tables[113]}} 30"
+			class="stul hAG v9" id="113"
+			onclick="oncheck('113', {{tables[113]}}, '30', 'Second Floor')"
+			title="Table no. 30, available seats: {{tables[113]}}"
+			{% if tables[113] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[112]}} 29"
+			class="stul hAG v11" id="112"
+			onclick="oncheck('112', {{tables[112]}}, '29', 'Second Floor')"
+			title="Table no. 29, available seats: {{tables[112]}}"
+			{% if tables[112] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[111]}} 28"
+			class="stul hAG v13" id="111"
+			onclick="oncheck('111', {{tables[111]}}, '28', 'Second Floor')"
+			title="Table no. 28, available seats: {{tables[111]}}"
+			{% if tables[111] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[110]}} 27"
+			class="stul hAG v15" id="110"
+			onclick="oncheck('110', {{tables[110]}}, '27', 'Second Floor')"
+			title="Table no. 27, available seats: {{tables[110]}}"
+			{% if tables[110] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[109]}} 26"
+			class="stul hAG v17" id="109"
+			onclick="oncheck('109', {{tables[109]}}, '26', 'Second Floor')"
+			title="Table no. 26, available seats: {{tables[109]}}"
+			{% if tables[109] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[108]}} 25"
+			class="stul hAG v19" id="108"
+			onclick="oncheck('108', {{tables[108]}}, '25', 'Second Floor')"
+			title="Table no. 25, available seats: {{tables[108]}}"
+			{% if tables[108] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[107]}} 24"
+			class="stul hAG v21" id="107"
+			onclick="oncheck('107', {{tables[107]}}, '24', 'Second Floor')"
+			title="Table no. 24, available seats: {{tables[107]}}"
+			{% if tables[107] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[106]}} 23"
+			class="stul hAG v23" id="106"
+			onclick="oncheck('106', {{tables[106]}}, '23', 'Second Floor')"
+			title="Table no. 23, available seats: {{tables[106]}}"
+			{% if tables[106] == 0 %}disabled{% endif %}
+		>
+
+
+		<!-- Spodní horizontální řada galerie -->
+		<input type="button" name="stul" value="{{tables[92]}} 9"
+			class="stul hE v27 vertikalni" id="92"
+			onclick="oncheck('92', {{tables[92]}}, '9', 'Second Floor')"
+			title="Table no. 9, available seats: {{tables[92]}}"
+			{% if tables[92] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[93]}} 10"
+			class="stul hG v27 vertikalni" id="93"
+			onclick="oncheck('93', {{tables[93]}}, '10', 'Second Floor')"
+			title="Table no. 10, available seats: {{tables[93]}}"
+			{% if tables[93] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[94]}} 11"
+			class="stul hI v27 vertikalni" id="94"
+			onclick="oncheck('94', {{tables[94]}}, '11', 'Second Floor')"
+			title="Table no. 11, available seats: {{tables[94]}}"
+			{% if tables[94] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[95]}} 12"
+			class="stul hK v27 vertikalni" id="95"
+			onclick="oncheck('95', {{tables[95]}}, '12', 'Second Floor')"
+			title="Table no. 12, available seats: {{tables[95]}}"
+			{% if tables[95] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[96]}} 13"
+			class="stul hM v27 vertikalni" id="96"
+			onclick="oncheck('96', {{tables[96]}}, '13', 'Second Floor')"
+			title="Table no. 13, available seats: {{tables[96]}}"
+			{% if tables[96] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[97]}} 14"
+			class="stul hO v27 vertikalni" id="97"
+			onclick="oncheck('97', {{tables[97]}}, '14', 'Second Floor')"
+			title="Table no. 14, available seats: {{tables[97]}}"
+			{% if tables[97] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[98]}} 15"
+			class="stul hQ v27 vertikalni" id="98"
+			onclick="oncheck('98', {{tables[98]}}, '15', 'Second Floor')"
+			title="Table no. 15, available seats: {{tables[98]}}"
+			{% if tables[98] == 0 %}disabled{% endif %}
+		>
+		<!--Druhá půlka horizontální řady - galerie -->
+		<input type="button" name="stul" value="{{tables[99]}} 16"
+			class="stul hT v27 vertikalni" id="99"
+			onclick="oncheck('99', {{tables[99]}}, '16', 'Second Floor')"
+			title="Table no. 16, available seats: {{tables[99]}}"
+			{% if tables[99] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[100]}} 17"
+			class="stul hV v27 vertikalni" id="100"
+			onclick="oncheck('100', {{tables[100]}}, '17', 'Second Floor')"
+			title="Table no. 17, available seats: {{tables[100]}}"
+			{% if tables[100] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[101]}} 18"
+			class="stul hX v27 vertikalni" id="101"
+			onclick="oncheck('101', {{tables[101]}}, '18', 'Second Floor')"
+			title="Table no. 18, available seats: {{tables[101]}}"
+			{% if tables[101] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[102]}} 19"
+			class="stul hZ v27 vertikalni" id="102"
+			onclick="oncheck('102', {{tables[102]}}, '19', 'Second Floor')"
+			title="Table no. 19, available seats: {{tables[102]}}"
+			{% if tables[102] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[103]}} 20"
+			class="stul hAB v27 vertikalni" id="103"
+			onclick="oncheck('103', {{tables[103]}}, '20', 'Second Floor')"
+			title="Table no. 20, available seats: {{tables[103]}}"
+			{% if tables[103] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[104]}} 21"
+			class="stul hAD v27 vertikalni" id="104"
+			onclick="oncheck('104', {{tables[104]}}, '21', 'Second Floor')"
+			title="Table no. 21, available seats: {{tables[104]}}"
+			{% if tables[104] == 0 %}disabled{% endif %}
+		>
+		<input type="button" name="stul" value="{{tables[105]}} 22"
+			class="stul hAF v27 vertikalni" id="105"
+			onclick="oncheck('105', {{tables[105]}}, '22', 'Second Floor')"
+			title="Table no. 22, available seats: {{tables[105]}}"
+			{% if tables[105] == 0 %}disabled{% endif %}
+		>
+	<div class="parket hL v7">Stage</div>
+	</fieldset>
+	
+</div>
+
+<form name="form" method="POST" class="form-style-5">
+	<p>Set a number of seats at each table (click on the table again to disable it):</p>
+	<div id="pocty_mist">
+	
+	</div>
+	
+	<input type="submit" class="btn btn-dark" name="reservation" value="Submit">
+
+	<h6 id="cena">
+		Total price: 0 Kč
+	</h6>
+</form>
+
+
+<script type="text/javascript"
+        src="{{ url_for('static', filename='table_map.js') }}">
+</script>
+{%endblock%}

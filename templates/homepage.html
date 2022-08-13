@@ -1,0 +1,14 @@
+{% extends "base_template.html"%}
+{% block title %}Maturita Prom ticket booking{%endblock%}
+{%block head%}
+<link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='formular.css') }}">
+{%endblock%}
+{% block body %}
+
+        <form class="form-style-5">
+            <h5>Ticket booking for Maturita Prom on 17th June 2022 (300 Kč/ticket):</h5>
+            
+            <input type="button" class="btn btn-dark" onclick="location.href='/form_standing';" value="Tickets for standing">
+            <input type="button" class="btn btn-dark" onclick="location.href='/form_sitting';" value="Tickets for sitting">
+        </form>
+{% endblock %}

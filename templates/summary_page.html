@@ -1,0 +1,56 @@
+{% extends "base_template.html" %}
+{% block title %}Thank You for booking the tickets!{%endblock%}
+{% block head %}
+<style>
+    td{padding-right: 15px}
+</style>
+{%endblock%}
+
+{% block body %}
+
+<h3>Confirmation of tickets' booking</h3>
+
+ <!-- List of booked tickets -->
+<p>Booked tickets: {{", ".join(tickets)}}.</p>
+ <!-- Price -->
+<p>Total price: <b>{{price}} Kč</b></p> 
+Please, send {{price}} Kč to the bank account {{account_number}} with variable symbol {{user.id}} in the next three days, otherwise your booking would be cancelled.<br>
+
+<!-- Contact information -->
+<table>
+    <tr>
+        <td>Name and surname</td>
+        <td>{{user.name}}</td></tr>
+    <tr>
+        <td>Email</td>
+        <td>{{user.email}}</td></tr>
+    <tr>
+        <td>Phone number</td>
+        <td>{{user.phone_number}}</td></tr>
+        <tr>
+            <td>Place of picking the tickets</td>
+            <td>
+                {% if user.place_of_picking_up == "office" %}
+                In the school's office (Dr. Emil Holub Grammar School)
+                {% elif user.place_of_picking_up == "ideon" %}
+                At Ideon
+                {% elif user.place_of_picking_up == "four" %}
+                At the class 4.A
+                {% elif user.place_of_picking_up == "eight" %}
+                At the class 8.C
+                {%endif%}
+    
+            </td></tr>
+</table>
+
+<!-- Email confirmation -->
+{% if mail_sent %}
+<p>We sent You a confirmation mail to Your mail address.</p>
+{% else %}
+<p><b>Unfortunately, we could not send You a confirmation mail, do not lose information on this page.</b></p>
+{% endif %}
+
+<!-- Contact mail-->
+<p>You can contact us at listky@210122.cz</p>
+
+{%endblock%}

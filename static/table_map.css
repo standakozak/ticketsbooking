@@ -1,0 +1,202 @@
+/*
+PŘI UPDATU CSS -> AKTIVACE V PROHLÍŽEČI POMOCÍ Ctrl+Shift+R
+*/
+
+/*FORMULÁŘ S TEXTOVÝMI POLI*/
+.required {color:red}
+
+.form-style-5{
+    max-width: 500px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    background: #f4f7f8;
+    border-radius: 8px;
+}
+
+
+.form-style-5 input[type="submit"]
+{
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-style-5 input[type="number"]:focus
+{
+    background: #d2d9dd;
+}
+.form-style-5 .number {
+    background: #1abc9c;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+
+.form-style-5 label {
+    display: inline-block;
+    margin-bottom: 6px;
+    margin-left: 10px;
+}
+
+
+.form-style-5 input[type="number"]
+{
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    margin: 0;
+    outline: 0;
+    padding: 10px;
+    width: 50%;
+    box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    background-color: #e8eeef;
+    color:rgba(0, 0, 0, 0.699);
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 20px;
+}
+
+
+/*Buttony - STOLY*/
+
+
+.skryte{display:none;}
+fieldset{height:650px;position:relative;}
+    .stul{display:block;height:25px;position:absolute;width:75px;white-space:normal;
+          /*background: linear-gradient(90deg, white 75%, rgba(154,153,170,1) 75%);*/
+          transition-duration:0.4s;background-color:white;color:black;border:2px solid #555555;
+    }
+        .stul.vertikalni{height:75px;width:25px;/*background: linear-gradient(180deg, white 75%, rgba(154,153,170,1) 75%);*/}
+        .stul:hover:enabled{background-color:#555555;color:white; background-image: none;}
+        .stul.clicked{background-color:#555555;color:white;}
+
+        .stul:disabled{opacity:0.6;background-color:#555555;color:lightgrey;}
+
+    .hB{left:50px}
+    .hC{left:75px}
+    .hD{left:100px}
+    .hE{left:125px}
+    .hF{left:150px}
+    .hG{left:175px}
+
+    .hH{left:200px}
+    .hI{left:225px}
+    .hJ{left:250px}
+    .hK{left:275px}
+    .hL{left:300px}
+    .hM{left:325px}
+    .hN{left:350px}
+    .hO{left:375px}
+
+    .hQ{left:425px}
+    .hS{left:475px}
+    .hT{left:500px}
+    .hU{left:525px}
+    .hV{left:550px}
+    .hW{left:575px}
+
+    .hX{left:600px}
+    .hY{left:625px}
+    .hZ{left:650px}
+    .hAA{left:675px}
+    .hAB{left:700px}
+    .hAC{left:725px}
+    .hAD{left:750px}
+
+    .hAF{left:800px}
+    .hAG{left:825px}
+    .hAH{left:850px}
+    .hAI{left:875px}
+    .hAK{left:925px}
+    .hAM{left:975px}
+
+    /*Takhle to pěkně vychází na násobky 25px, ale zabírá to moc místa*/
+    /*.v3{top:50px}
+    .v5{top:100px}
+    .v7{top:150px}
+    .v8{top:175px}
+    .v11{top:250px}
+    .v14{top:325px}
+    .v17{top:400px}
+    .v20{top:475px} 
+    */
+
+    .v3{top:40px}
+    .v5{top:80px}
+    .v7{top:120px}
+    .v8{top:140px}
+    .v9{top:160px}
+    .v11{top:200px}
+    .v13{top:240px}
+    .v14{top:260px}
+    .v15{top:280px}
+    .v17{top:320px}
+    .v19{top:360px}
+    .v20{top:380px}
+    .v21{top:400px}
+    .v23{top:440px}
+    .v27{top:480px}
+
+    .v28{top:40px}
+    .v30{top:80px}
+    .v32{top:120px}
+    .v33{top:140px}
+    .v34{top:160px}
+    .v36{top:200px}
+    .v38{top:240px}
+
+.sal_button{
+    border: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    transition-duration:0.4s;
+    width: 200px;
+}
+.sal_active{
+background-color: #555555;
+color: white;
+}
+
+.sal_button:hover {
+    background-color: #555555;
+    color: white;
+  }
+
+.parket{height:225px;line-height:225px;outline:1px solid grey;position:absolute;text-align:center;text-transform:uppercase;width:225px;}
+
+#levy_sal_div{
+    float:left;
+    
+}
+
+#pravy_sal_div{
+    margin-left: 625px;
+}
+#velky_sal_div{
+    height:550px;
+}
+#prizemi_sal_div{
+    height: 900px;
+}

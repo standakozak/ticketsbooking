@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head%}{% endblock %}
+    <style>
+
+        .body_content{margin: auto; max-width:1000px;min-width:250px}
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="body_content">
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="/">Maturita Prom of Dr. Emil Holub Grammar School 2022</a>
+            <a class="navbar-brand" href="http://www.gyholi.cz/">
+                <img src="{{ url_for('static', filename='logo.png') }}" text-align="right" width="30" height="30" class="d-inline-block align-top" alt="">
+                
+            </a>
+        </nav>
+        <div class="container-fluid">
+        {% block body %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{% extends "base_template.html"%}
+{% block title %}Administration {{signed_user}}{%endblock%}
+{%block head%}
+<style>
+    #hide {display:none}
+    .administration {display:block}
+    label {margin-right:5px; margin-left:7px}
+</style>
+{%endblock%}
+{% block body %}
+        <form name="form" method="POST">
+            
+            {% if signed_user == "administration" %}
+                <button type="submit" name="submit_btn" value="payments" class="btn btn-dark">Check payments and cancel invalid bookings</button>
+                <button type="submit" name="submit_btn" value="return_cancellation" class="btn btn-dark">Restore last cancelled bookings (in this session)</button><br><br>
+            {%endif%}
+            <label for="start_date">Start date</label>
+            <input type="date" id="start_date" name="start_date" value="2022-03-01" min="2021-01-01" max="2023-01-01">
+            <label for="end_date">End date</label>
+            <input type="date" id="end_date" name="end_date" value="2022-07-01" min="2021-01-01" max="2023-01-01">
+            <button type="submit" name="submit_btn" value="show_payments" class="btn btn-dark">Show payments</button><br>
+            
+            <h5>Filter users and tickets:</h5>
+            <b>Paid:</b><br>
+            <label for="zapl_true">Yes </label><input type="radio" name="paid_true_false" value="true" id="zapl_true" {%if paid_filter == "true"%}checked{%endif%}>
+            <label for="zapl_false">No </label><input type="radio" name="paid_true_false" value="false" id="zapl_false" {%if paid_filter == "false"%}checked{%endif%}>
+            <label for="zapl_none">All </label><input type="radio" name="paid_true_false" value="none" id="zapl_none" {%if paid_filter == "none"%}checked{%endif%}><br>
+            <b>Picked up:</b><br>
+            <label for="vyzved_true">Yes </label><input type="radio" name="picked_up_true_false" value="true" id="vyzved_true" {%if picked_filter == "true"%}checked{%endif%}>
+            <label for="vyzved_false">No </label><input type="radio" name="picked_up_true_false" value="false" id="vyzved_false" {%if picked_filter == "false"%}checked{%endif%}>
+            <label for="vyzved_none">All </label><input type="radio" name="picked_up_true_false" value="none" id="vyzved_none" {%if picked_filter == "none"%}checked{%endif%}><br>
+            <b>Place:</b><br>
+            <label for="vyzved_kancel">School's office </label><input type="radio" name="place" value="office" id="vyzved_kancel" {%if place_filter == "office"%}checked{%endif%}>
+            
+            <label for="vyzved_ideon">At Ideon </label><input type="radio" name="place" value="ideon" id="vyzved_ideon" {%if place_filter == "ideon"%}checked{%endif%}>
+            
+            <label for="vyzved_osma">At 8.C </label><input type="radio" name="place" value="eight" id="vyzved_osma" {%if place_filter == "eight"%}checked{%endif%}>
+            <label for="vyzved_ctvrta">At 4.A </label><input type="radio" name="place" value="four" id="vyzved_ctvrta" {%if place_filter == "four"%}checked{%endif%}>
+            <label for="vyzved_misto_none">All  </label><input type="radio" name="place" value="none" id="vyzved_misto_none" {%if place_filter == "none"%}checked{%endif%}><br>
+
+            <button type="submit" name="submit_btn" value="show_users" class="btn btn-dark">Filter users</button>
+            <button type="submit" name="submit_btn" value="show_tickets" class="btn btn-dark">Filter booked tickets</button>
+            <br><br>
+            <h5>Search for user:</h5>
+            User's name or ID:<br>
+            <input type="text" name="user_id" value="{{user_id}}" value="0"><br>
+
+            <button type="submit" name="submit_btn" value="find_user" class="btn btn-dark">Find user</button>
+            <br>
+                <label for="true">Yes</label><input type="radio" name="true_false" value="true" id="true" checked>
+                <label for="false">No</label><input type="radio" name="true_false" value="false" id="false"><br>
+            
+            
+            
+            {% if signed_user == "administration"%}
+            <button type="submit" name="submit_btn" value="set_paid" class="btn btn-dark">User paid</button>
+            {%endif%}
+
+            <button type="submit" name="submit_btn" value="set_picked_up" class="btn btn-dark">User picked up tickets</button>
+
+            {% if signed_user == "administration"%}
+            <button type="submit" name="submit_btn" value="delete_user" class="btn btn-danger">Delete user with no tickets</button>
+            <br><br>
+            Cancel specific ticket: <br>
+            {% endif %}
+            <input type="number" name="ticket_id" value="{{ticket_id}}" min="0" id="{% if signed_user != 'administration'%}hide{%endif%}"><br>
+            {% if signed_user == "administration"%}
+            <button type="submit" name="submit_btn" value="cancel_specific_ticket" class="btn btn-danger">Cancel booking</button>
+            {% endif %}
+
+            <p>
+
+                {%if output_text != None %}
+                    {%for line in output_text%}
+                    
+                    {{line|safe}}<br>
+                    {%endfor%}
+                {%endif%}
+            </p>
+
+        </form>
+{% endblock %}
